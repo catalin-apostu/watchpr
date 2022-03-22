@@ -7,9 +7,9 @@ export default function IndexPage() {
         <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
           <div
             className="infogram-embed"
-            data-id="e40976ae-691a-474d-a27a-bb8a121fde59"
+            data-id="a6f2c60e-b98b-4b15-b799-d0376607edbd"
             data-type="interactive"
-            data-title="Raport 1 v6"
+            data-title="Raport 1 Watch PR"
           />
           <Script
             id=""
