@@ -1,8 +1,9 @@
 import Script from "next/script";
+import Layout from "components/layout";
 
-export default function IndexPage() {
+export default function IndexPage({ preview }: { preview: boolean }) {
   return (
-    <>
+    <Layout preview={preview}>
       <div className="bg-white">
         <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
           <div
@@ -21,6 +22,6 @@ export default function IndexPage() {
           />
         </div>
       </div>
-    </>
+    </Layout>
   );
 }
