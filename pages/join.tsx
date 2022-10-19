@@ -1,6 +1,6 @@
 import Layout from 'components/layout'
 
-export default function IndexPage({ preview/*, page*/ }: { preview: boolean/*; page: Page*/ }) {
+export default function IndexPage({ preview }: { preview: boolean }) {
   return (
     <Layout preview={preview}>
       <div className='bg-white'>
@@ -9,8 +9,7 @@ export default function IndexPage({ preview/*, page*/ }: { preview: boolean/*; p
             src='https://docs.google.com/forms/d/e/1FAIpQLSc5Nh-PcJ9VMKB06NyNABq4H4OzK3-j-FFPmaQvyqyvZEfI1Q/viewform?embedded=true'
             width='640'
             height='4046'
-            frameBorder='0'
-          >
+            frameBorder='0'>
             Loading…
           </iframe>
         </div>
