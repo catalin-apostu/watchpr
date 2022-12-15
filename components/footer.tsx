@@ -8,15 +8,18 @@ export function Footer() {
         <div className='mt-8 lg:mt-0'>
           <div className='mt-2 text-xl leading-8 font-extrabold tracking-tight'>
             <Link href='/' passHref>
-              <a>watchpr.ro</a>
+              watchpr.ro
             </Link>
           </div>
           <div>
             <span>
-              <Link href={`/legal/privacy`}>
-                <a title='Politica de confidențialitate' style={{ color: '#4278b3' }}>
+              <Link
+                href={`/legal/privacy`}
+                title='Politica de confidențialitate'
+                style={{ color: '#4278b3' }}>
+                
                   Politica de confidențialitate
-                </a>
+                
               </Link>
             </span>
           </div>
@@ -59,5 +62,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

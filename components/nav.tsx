@@ -23,7 +23,7 @@ export function Nav() {
       <div className='sticky top-0 z-10 bg-white shadow-sm dark:bg-gray-800'>
         <div className='flex shadow-md justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10'>
           <div className='flex justify-start lg:w-0 lg:flex-1'>
-            <Link href='/' passHref>
+            <Link href='/' passHref legacyBehavior>
               <h1 className='text-3xl tracking-tight font-extrabold dark:text-white text-gray-900 sm:text-3xl md:text-3xl cursor-pointer'>
                 <Image src={`/images/profile.png`} height={65} width={65} alt={'logo'} />
               </h1>
@@ -33,8 +33,7 @@ export function Nav() {
             <button
               type='button'
               onClick={() => setShowNav(true)}
-              className='bg-white dark:bg-gray-800 rounded-md p-2 inline-flex items-center justify-center text-gray-400 dark:text-white dark:hover:text-gray-100 hover:text-gray-500 dark:hover:bg-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-100'
-            >
+              className='bg-white dark:bg-gray-800 rounded-md p-2 inline-flex items-center justify-center text-gray-400 dark:text-white dark:hover:text-gray-100 hover:text-gray-500 dark:hover:bg-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-100'>
               <span className='sr-only'>Open menu</span>
               <svg
                 className='h-6 w-6'
@@ -42,35 +41,38 @@ export function Nav() {
                 fill='none'
                 viewBox='0 0 24 24'
                 stroke='currentColor'
-                aria-hidden='true'
-              >
+                aria-hidden='true'>
                 <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M4 6h16M4 12h16M4 18h16' />
               </svg>
             </button>
           </div>
           <nav className='hidden md:flex space-x-10'>
-            <Link href='/' passHref>
+            <Link href='/' passHref legacyBehavior>
               <span
                 className={`text-base cursor-pointer font-medium ${
                   activeRoute === '/' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
-                } hover:text-gray-900 dark:hover:text-gray-100`}
-              >
+                } hover:text-gray-900 dark:hover:text-gray-100`}>
                 Raport
               </span>
             </Link>
-            <Link href='/join' passHref>
+            <Link href='/blog' passHref legacyBehavior>
+              <span
+                className={`text-base cursor-pointer font-medium ${
+                  activeRoute === '/blog' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
+                } hover:text-gray-900 dark:hover:text-gray-100`}>
+                Noutăți
+              </span>
+            </Link>
+            <Link href='/join' passHref legacyBehavior>
               <span
                 className={`text-base cursor-pointer font-medium ${
                   activeRoute === '/join' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
-                } hover:text-gray-900 dark:hover:text-gray-100`}
-              >
+                } hover:text-gray-900 dark:hover:text-gray-100`}>
                 Alătură-te
               </span>
             </Link>
           </nav>
-          <div className={`hidden md:flex items-center justify-end md:flex-1 md:w-0`}>
-            {/* <Search /> */}
-          </div>
+          <div className={`hidden md:flex items-center justify-end md:flex-1 md:w-0`}>{/* <Search /> */}</div>
         </div>
         <Transition
           show={showNav}
@@ -79,8 +81,7 @@ export function Nav() {
           enterTo='opacity-100 scale-100'
           leave='duration-100 ease-in'
           leaveFrom='opacity-100 scale-100'
-          leaveTo='opacity-0 scale-95'
-        >
+          leaveTo='opacity-0 scale-95'>
           <div className='absolute z-10 top-0 h-screen inset-x-0 p-2 transition transform origin-top-right md:hidden'>
             <div className='rounded-lg shadow-xl h-full ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50'>
               <div className='pt-5 pb-6 px-5'>
@@ -90,11 +91,14 @@ export function Nav() {
               </div>
               <div className='py-6 px-5'>
                 <div className='grid grid-cols-4 gap-4 justify-items-center'>
-                  <Link href='/' passHref>
-                    <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Raport</a>
+                  <Link href='/' passHref className='text-base font-medium text-gray-500 hover:text-gray-900'>
+                    Raport
                   </Link>
-                  <Link href='/join' passHref>
-                    <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Alătură-te</a>
+                  <Link href='/blog' passHref className='text-base font-medium text-gray-500 hover:text-gray-900'>
+                    Noutăți
+                  </Link>
+                  <Link href='/join' passHref className='text-base font-medium text-gray-500 hover:text-gray-900'>
+                    Alătură-te
                   </Link>
                 </div>
               </div>
@@ -103,8 +107,7 @@ export function Nav() {
                   <button
                     type='button'
                     onClick={() => setShowNav(false)}
-                    className='w-full flex mt-12 items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10'
-                  >
+                    className='w-full flex mt-12 items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10'>
                     {/*Heroicon name: x */}
                     <svg
                       className='h-6 w-6'
@@ -112,8 +115,7 @@ export function Nav() {
                       fill='none'
                       viewBox='0 0 24 24'
                       stroke='currentColor'
-                      aria-hidden='true'
-                    >
+                      aria-hidden='true'>
                       <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M6 18L18 6M6 6l12 12' />
                     </svg>
                     <span className='pl-4'>Închide meniul</span>
