@@ -52,15 +52,15 @@ export function Nav() {
                 className={`text-base cursor-pointer font-medium ${
                   activeRoute === '/' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
                 } hover:text-gray-900 dark:hover:text-gray-100`}>
-                Raport
+                Noutăți
               </span>
             </Link>
-            <Link href='/blog' passHref legacyBehavior>
+            <Link href='/report' passHref legacyBehavior>
               <span
                 className={`text-base cursor-pointer font-medium ${
-                  activeRoute === '/blog' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
+                  activeRoute === '/report' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
                 } hover:text-gray-900 dark:hover:text-gray-100`}>
-                Noutăți
+                Raport
               </span>
             </Link>
             <Link href='/join' passHref legacyBehavior>
@@ -92,10 +92,10 @@ export function Nav() {
               <div className='py-6 px-5'>
                 <div className='grid grid-cols-4 gap-4 justify-items-center'>
                   <Link href='/' passHref className='text-base font-medium text-gray-500 hover:text-gray-900'>
-                    Raport
-                  </Link>
-                  <Link href='/blog' passHref className='text-base font-medium text-gray-500 hover:text-gray-900'>
                     Noutăți
+                  </Link>
+                  <Link href='/report' passHref className='text-base font-medium text-gray-500 hover:text-gray-900'>
+                    Raport
                   </Link>
                   <Link href='/join' passHref className='text-base font-medium text-gray-500 hover:text-gray-900'>
                     Alătură-te

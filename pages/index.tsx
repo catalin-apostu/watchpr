@@ -1,27 +1,51 @@
-import Script from "next/script";
-import Layout from "components/layout";
+import { NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
+import Layout from 'components/layout'
+import { BlogTicks } from 'components/blog-ticks'
+import { getBlogPosts } from 'lib/api'
+import { BlogPost } from 'lib/contentTypes'
 
-export default function IndexPage({ preview }: { preview: boolean }) {
+type Props = {
+  blogPosts: BlogPost[]
+  preview: boolean
+}
+
+const limit = 6
+
+export default function IndexPage({ blogPosts, preview }: Props) {
+  const router = useRouter()
+
   return (
     <Layout preview={preview}>
-      <div className="bg-white">
-        <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
-          <div
-            className="infogram-embed"
-            data-id="230e278e-b95b-41c9-9f83-871ec852c974"
-            data-type="interactive"
-            data-title="Raport 1 Watch PR"
-          />
-          <Script
-            id=""
-            dangerouslySetInnerHTML={{
-              __html: `
-                !function(e,i,n,s){var t="InfogramEmbeds",d=e.getElementsByTagName("script")[0];if(window[t]&&window[t].initialized)window[t].process&&window[t].process();else if(!e.getElementById(n)){var o=e.createElement("script");o.async=1,o.id=n,o.src="https://e.infogram.com/js/dist/embed-loader-min.js",d.parentNode.insertBefore(o,d)}}(document,0,"infogram-async");
-              `,
+      {router.isFallback ? (
+        <>Loading…</>
+      ) : (
+        <>
+          <NextSeo
+            title={`Noutăți - Watch PR`}
+            description={`WATCH PR – Watchdog – Advocacy – Transparență – Corectitudine – Harta Politicii Românești`}
+            canonical={`https://watchpr.ro`}
+            openGraph={{
+              url: `https://watchpr.ro`,
+              title: `Noutăți - Watch PR`,
+              description: `WATCH PR – Watchdog – Advocacy – Transparență – Corectitudine – Harta Politicii Românești`,
+              images: blogPosts?.filter((blogPost) => blogPost.image != null).map((blogPost) => blogPost.image),
             }}
           />
-        </div>
-      </div>
+          <BlogTicks blogPosts={blogPosts} />
+        </>
+      )}
     </Layout>
-  );
+  )
+}
+
+export async function getStaticProps({ preview = false }: { preview: boolean }) {
+  const blogPosts = await getBlogPosts(60, preview)
+
+  return {
+    props: {
+      blogPosts,
+      preview,
+    },
+  }
 }
